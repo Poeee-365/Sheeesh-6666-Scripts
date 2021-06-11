@@ -21,8 +21,8 @@ local Swamp = GlobalPath.Island6.Model.Toucher.CFrame
 local Cow = GlobalPath.Island7.Model.Toucher.CFrame
 local Candy = GlobalPath.Island8.Model.Toucher.CFrame
 local Shop = GlobalPath.Floor.ShampooShop.Beacon.Toucher.CFrame
-
-
+local HairShop = GlobalPath.Floor.HairStore.Beacon.Toucher.CFrame
+local RebirthShop = GlobalPath.Floor.RebirthShop.Beacon.Toucher.CFrame
 
 --Functions
 
@@ -78,6 +78,14 @@ end)
 
 b:Button("Shop",function()
     TeleportTo(Shop)
+end)
+
+b:Button("HairShop",function()
+    TeleportTo(HairShop)
+end)
+
+b:Button("RebirthShop",function()
+    TeleportTo(RebirthShop)
 end)
 
 b:Button("Garden",function()
