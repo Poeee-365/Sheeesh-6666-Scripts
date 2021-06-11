@@ -1,0 +1,125 @@
+--Globals
+getgenv().AutoFarm = true
+
+
+
+
+
+--Variables
+local plr = game.Players.LocalPlayer
+local GlobalPath = game:GetService("Workspace").Map.World1
+local AutoFarmPath =  game:GetService("Players").LocalPlayer.Character
+
+--Teleports 
+local Sell = GlobalPath.Floor.SellStation.Beacon.Toucher.CFrame
+local Garden = GlobalPath.Island1.Model.Toucher.CFrame
+local Dune = GlobalPath.Island2.Model.Toucher.CFrame
+local Snow = GlobalPath.Island3.Model.Toucher.CFrame
+local Water = GlobalPath.Island4.Model.Toucher.CFrame
+local Lava = GlobalPath.Island5.Model.Toucher.CFrame
+local Swamp = GlobalPath.Island6.Model.Toucher.CFrame
+local Cow = GlobalPath.Island7.Model.Toucher.CFrame
+local Candy = GlobalPath.Island8.Model.Toucher.CFrame
+local Shop = GlobalPath.Floor.ShampooShop.Beacon.Toucher.CFrame
+
+
+
+--Functions
+
+function getCurrentPOS()
+    if plr.Character then
+        return plr.Character.HumanoidRootPart.Position
+    end
+    return false
+end
+
+function TeleportTo(PlaceCFrame)
+    if plr.Character then
+        plr.Character.HumanoidRootPart.CFrame = PlaceCFrame
+    end
+end
+
+
+function Farm()
+    spawn(function()
+        while getgenv().AutoFarm == true do
+            game:GetService("Players").LocalPlayer.Character:FindFirstChild("Ghost Shampoo").Remotes.Events.RequestPoints:FireServer()
+            wait()
+        end
+    end)
+end
+
+--GUI
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+local w = library:CreateWindow("Shampoo Simulator") 
+
+local b = w:CreateFolder("Teleports") 
+
+local c = w:CreateFolder("AutoFarm") 
+
+local f = w:CreateFolder("Settings")
+
+f:DestroyGui()
+
+
+c:Toggle("AutoFarm",function(bool)
+    getgenv().AutoFarm = bool
+    print("AutoFarm is", bool)
+    if bool == true then 
+        Farm()
+    end
+end)
+
+b:Button("Sell",function()
+    TeleportTo(Sell)
+end)
+
+b:Button("Shop",function()
+    TeleportTo(Shop)
+end)
+
+b:Button("Garden",function()
+    TeleportTo(Garden)
+end)
+
+b:Button("Dune",function()
+    TeleportTo(Dune)
+end)
+
+b:Button("Snow",function()
+    TeleportTo(Snow)
+end)
+
+b:Button("Water",function()
+    TeleportTo(Water)
+end)
+
+b:Button("Lava",function()
+    TeleportTo(Lava)
+end)
+
+b:Button("Swamp",function()
+    TeleportTo(Swamp)
+end)
+
+b:Button("Cow",function()
+    TeleportTo(Cow)
+end)
+
+b:Button("Candy",function()
+    TeleportTo(Candy)
+end)
+
+
+
+
+
+
+f:Label("Made By Sheeesh#6666",{
+    TextSize = 15;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+
+})
